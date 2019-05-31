@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+  <data>
+    <import type="android.view.View"/>
+    <variable
+      name="reputation"
+      type="com.utopia.stackoverflowuser.data.remote.pojo.ReputationResponse"/>
+  </data>
+  <RelativeLayout
+    android:id="@+id/layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@drawable/bg_bottom_border"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/postId"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="@{`#`+reputation.postId}"
+        android:textColor="@color/blue"/>
+
+      <TextView
+        android:id="@+id/reputationHistoryType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postId"
+        android:text="@{reputation.reputationHistoryType+``}"
+        android:textAllCaps="true"
+        android:textSize="12sp"/>
+
+      <TextView
+        android:id="@+id/last_access_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+  </RelativeLayout>
+
+</layout>

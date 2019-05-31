@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context="com.utopia.stackoverflowuser.views.main.MainActivity">
+  <item
+    android:id="@+id/action_bookmarks"
+    android:icon="@drawable/ic_bookmark_white"
+    android:orderInCategory="100"
+    android:title="@string/bookmarks"
+    app:showAsAction="always"/>
+</menu>

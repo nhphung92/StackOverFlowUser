@@ -1,0 +1,11 @@
+<resources>
+  <string name="app_name">StackOverFlowUser</string>
+  <string name="action_settings">Settings</string>
+  <string name="toast_no_internet">No internet connection</string>
+  <string name="no_user_not_found">User Not Found</string>
+  <string name="format_reputation">%1$s reputation</string>
+  <string name="format_last_seen">Last seen %1$s</string>
+  <string name="format_postId">https://stackoverflow.com/q/%1$d</string>
+  <string name="bookmarks">Bookmarks</string>
+  <string name="no_bookmarks_here">No bookmarks here</string>
+</resources>

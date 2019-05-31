@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+  <data>
+    <import type="android.view.View"/>
+    <variable
+      name="showLoading"
+      type="Boolean"/>
+    <variable
+      name="user"
+      type="com.utopia.stackoverflowuser.data.remote.pojo.UserResponse"/>
+  </data>
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.user.UserActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appbarlayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:elevation="0dp">
+
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@drawable/ic_back"
+        app:titleTextColor="@color/white"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+      <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+          <RelativeLayout
+            android:id="@+id/layout_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+              android:id="@+id/layout_avatar"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="16dp"
+              android:layout_alignParentStart="true"
+              android:layout_centerInParent="true"
+              android:gravity="center"
+              android:orientation="vertical">
+
+              <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:padding="0.5dp"
+                android:src="@drawable/ic_avatar"/>
+
+              <TextView
+                android:id="@+id/reputation"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                  android:textStyle="bold"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingTop="2dp"
+                  android:paddingBottom="2dp"
+                  android:paddingStart="4dp"
+                  android:paddingEnd="4dp"
+                  android:background="@drawable/bg_gold"
+                  android:text="@{user.badgeCounts.gold+``}"
+                  android:textColor="@color/black"
+                  android:textSize="12sp"/>
+
+                <TextView
+                  android:textStyle="bold"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:layout_marginEnd="8dp"
+                  android:paddingTop="2dp"
+                  android:paddingBottom="2dp"
+                  android:paddingStart="4dp"
+                  android:paddingEnd="4dp"
+                  android:background="@drawable/bg_silver"
+                  android:text="@{user.badgeCounts.silver+``}"
+                  android:textColor="@color/black"
+                  android:textSize="12sp"/>
+
+                <TextView
+                  android:textStyle="bold"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingTop="2dp"
+                  android:paddingBottom="2dp"
+                  android:paddingStart="4dp"
+                  android:paddingEnd="4dp"
+                  android:background="@drawable/bg_bronze"
+                  android:text="@{user.badgeCounts.bronze+``}"
+                  android:textColor="@color/black"
+                  android:textSize="12sp"/>
+
+              </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_toEndOf="@+id/layout_avatar"
+              android:orientation="vertical">
+
+              <TextView
+                android:id="@+id/display_name"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.displayName + ` #`+user.userId}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@android:color/black"/>
+
+              <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.location}"
+                android:textSize="12sp"/>
+
+              <TextView
+                android:id="@+id/websiteUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.websiteUrl}"
+                android:textColor="@color/blue"
+                android:textSize="12sp"/>
+
+              <TextView
+                android:id="@+id/lastAccessDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"/>
+
+            </LinearLayout>
+
+          </RelativeLayout>
+
+          <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_info">
+
+            <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/recycler_view"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"/>
+
+            <ProgressBar
+              android:id="@+id/progressBar"
+              style="?android:attr/progressBarStyleHorizontal"
+              android:layout_width="match_parent"
+              android:layout_height="14dp"
+              android:layout_gravity="bottom"
+              android:background="@color/white"
+              android:indeterminate="true"
+              android:indeterminateTint="@color/red"
+              android:visibility="@{showLoading == true ? View.VISIBLE : View.GONE}"/>
+
+          </FrameLayout>
+
+
+        </RelativeLayout>
+
+      </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
